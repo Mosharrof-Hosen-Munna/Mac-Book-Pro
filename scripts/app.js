@@ -26,17 +26,20 @@ function calculateTotal() {
 // calculateTotal function end
 
 // calculateDiscount function start
+let isApply = false;
 function calculateDiscount(discount) {
   const promoField = document.getElementById("promo-input");
-  if (promoField.value === "stevekaku") {
+
+  if (promoField.value === "stevekaku" && !isApply) {
     const totalPrice = document.getElementById("discount-price");
     const totalPriceNumber = parseInt(totalPrice.innerText);
     const discountPrice = (totalPriceNumber / 100) * discount;
     const discountTotalPrice = totalPriceNumber - discountPrice;
     totalPrice.innerText = discountTotalPrice;
     promoField.value = "";
+    isApply = true;
   } else {
-    alert("Your Promo Code " + promoField.value + "is Invalid");
+    alert("Your Promo Code " + promoField.value + " Invalid");
     promoField.value = "";
   }
 }
